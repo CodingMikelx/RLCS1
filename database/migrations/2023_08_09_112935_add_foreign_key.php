@@ -22,7 +22,6 @@ return new class extends Migration
         Schema::table('page', function (Blueprint $table) {
             $table->foreignId('story_id')->references('id')->on('story')->cascadeOnDelete();
             $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete();
-            $table->foreignId('text_id')->references('id')->on('text')->cascadeOnDelete();
         });
         Schema::table('interact', function (Blueprint $table) {
             $table->foreignId('page_id')->references('id')->on('page')->cascadeOnDelete();
