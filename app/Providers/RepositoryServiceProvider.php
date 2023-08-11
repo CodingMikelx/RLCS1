@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Interfaces\CreatorRepositoryInterface;
+use App\Interfaces\RepositoryInterface;
 use App\Repositories\CreatorRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +14,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
-        $this->app->bind(CreatorRepositoryInterface::class, CreatorRepository::class);
+        $this->app->bind(RepositoryInterface::class, CreatorRepository::class);
     }
 
     /**
