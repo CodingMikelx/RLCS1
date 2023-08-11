@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImagesController;
-use App\Models\Images;
+use App\Http\Controllers\CreatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +28,9 @@ Route::post('add-image',[ImagesController::class, 'create']);
 Route::put('edit-image', [ImagesController::class, 'edit']);
 Route::delete('delete-product', [ImagesController::class, 'delete']);
 Route::get('get-data', [ImagesController::class, 'getData']);
+
+Route::get('creators', [CreatorController::class, 'index']);
+Route::get('creators/{id}', [CreatorController::class, 'show']);
+Route::post('creators', [CreatorController::class, 'store']);
+Route::put('creators/{id}', [CreatorController::class, 'update']);
+Route::delete('creators/{id}', [CreatorController::class, 'delete']);
