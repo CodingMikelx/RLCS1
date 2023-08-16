@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(CreatorSeeder::class);
-        // $this->call(ImagesSeeder::class);
-        // $this->call(AudioSeeder::class);
+        $this->call(ImagesSeeder::class);
+        $this->call(AudioSeeder::class);
+        $this->call(CreateUserSeeder::class);
     }
 }

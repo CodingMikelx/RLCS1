@@ -17,6 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
         //
         $this->app->bind(RepositoryInterface::class, CreatorRepository::class);
         $this->app->bind(RepositoryInterface::class, AudioRepository::class);
+        
     }
 
     /**
