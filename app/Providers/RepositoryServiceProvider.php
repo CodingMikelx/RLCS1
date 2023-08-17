@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\AudioController;
+use App\Http\Controllers\CreatorController;
 use App\Interfaces\RepositoryInterface;
 use App\Repositories\CreatorRepository;
 use App\Repositories\AudioRepository;
@@ -15,9 +17,20 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
-        $this->app->bind(RepositoryInterface::class, CreatorRepository::class);
-        $this->app->bind(RepositoryInterface::class, AudioRepository::class);
-        
+        // $this->app->bind(RepositoryInterface::class, CreatorRepository::class);
+        // $this->app->bind(RepositoryInterface::class, AudioRepository::class);
+
+        $this->app->when(CreatorController::class)->needs(RepositoryInterface::class)->give(
+            function () {
+                return new CreatorRepository;
+            }
+        );
+
+        $this->app->when(AudioController::class)->needs(RepositoryInterface::class)->give(
+            function () {
+                return new AudioRepository;
+            }
+        );
     }
 
     /**
