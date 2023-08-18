@@ -12,27 +12,27 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('text', function (Blueprint $table) {
-            $table->foreignId('page_id')->references('id')->on('page')->cascadeOnDelete();
-            $table->foreignId('audio_id')->references('id')->on('audio')->cascadeOnDelete();
-            $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete();
+            $table->foreignId('page_id')->references('id')->on('page')->cascadeOnDelete()->nullable();
+            $table->foreignId('audio_id')->references('id')->on('audio')->cascadeOnDelete()->nullable();
+            $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete()->nullable();
         });
         Schema::table('images', function (Blueprint $table) {
-            $table->foreignId('text_id')->references('id')->on('text')->cascadeOnDelete()->nul;
+            $table->foreignId('text_id')->nullable()->constrained('text')->onDelete('cascade');
         });
         Schema::table('page', function (Blueprint $table) {
-            $table->foreignId('story_id')->references('id')->on('story')->cascadeOnDelete();
-            $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete();
+            $table->foreignId('story_id')->references('id')->on('story')->cascadeOnDelete()->nullable();
+            $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete()->nullable();
         });
         Schema::table('interact', function (Blueprint $table) {
-            $table->foreignId('page_id')->references('id')->on('page')->cascadeOnDelete();
-            $table->foreignId('animation_id')->references('id')->on('animation')->cascadeOnDelete();
-            $table->foreignId('text_id')->references('id')->on('text')->cascadeOnDelete();
-            $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete();
-            $table->foreignId('interact_event_id')->references('id')->on('interact_event')->cascadeOnDelete();
+            $table->foreignId('page_id')->references('id')->on('page')->cascadeOnDelete()->nullable();
+            $table->foreignId('animation_id')->references('id')->on('animation')->cascadeOnDelete()->nullable();
+            $table->foreignId('text_id')->references('id')->on('text')->cascadeOnDelete()->nullable();
+            $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete()->nullable();
+            $table->foreignId('interact_event_id')->references('id')->on('interact_event')->cascadeOnDelete()->nullable();
         });
         Schema::table('story', function (Blueprint $table) {
-            $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete();
-            $table->foreignId('creator_id')->references('id')->on('creator')->cascadeOnDelete();
+            $table->foreignId('images_id')->references('id')->on('images')->cascadeOnDelete()->nullable();
+            $table->foreignId('creator_id')->references('id')->on('creator')->cascadeOnDelete()->nullable();
         });
     }
 

@@ -9,11 +9,12 @@ class ImagesController extends Controller
     //
     public function create(Request $request){
         //Data của request lấy từ api post
-        $image = new Images(); 
+        $image = new Images();
         $image->name = $request->name;
+        $image->type = $request->type;
         $image->imageDirectory = $request->imageDirectory;
-        
-        
+        $image->text_id = $request->text_id;
+
         $image->save();
         return response()->json('Added Successfully');
     }

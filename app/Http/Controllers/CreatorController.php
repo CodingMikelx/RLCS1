@@ -16,7 +16,7 @@ class CreatorController extends Controller
     {
         $this->creatorRepository = $creatorRepository;
     }
-
+    
     public function index(): JsonResponse
     {
         return response()->json([
@@ -27,10 +27,17 @@ class CreatorController extends Controller
     public function store(Request $request): JsonResponse
     {
         // variable which is created in interface also be used
+        
+        // $objectDetails = $request->validate([
+        //     'name' => 'required',
+        //     'role' => 'required',
+        // ]);
+        
         $objectDetails = $request->only([
             'name',
             'role'
         ]);
+        
         // using method of creatorRepository which is called from Model's method
         return response()->json(
             [

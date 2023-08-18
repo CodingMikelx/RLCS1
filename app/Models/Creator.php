@@ -9,4 +9,5 @@ class Creator extends Model
 {
     use HasFactory;
     protected $table = 'creator';
+    protected $fillable = ['name', 'role'];
 }
