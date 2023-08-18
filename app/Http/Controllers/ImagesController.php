@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Images;
+use App\Http\Requests\ImagesRequest;
+
 class ImagesController extends Controller
 {
     //
-    public function create(Request $request){
+    public function create(ImagesRequest $request){
+        
         //Data của request lấy từ api post
         $image = new Images();
         $image->name = $request->name;
@@ -19,10 +22,12 @@ class ImagesController extends Controller
         return response()->json('Added Successfully');
     }
     
-    public function edit(Request $request){
-        $image = Images::findorfail($request->id);
+    public function edit(ImagesRequest $request){
+        $image = Images::findorfail($request->route('id'));
         $image->name = $request->name;
+        $image->type = $request->type;
         $image->imageDirectory = $request->imageDirectory;
+        $image->text_id = $request->text_id;
 
         $image->update();
 
@@ -30,7 +35,7 @@ class ImagesController extends Controller
     }
 
     public function delete(Request $request){
-        $image = Images::findorfail($request->id)->delete();
+        $image = Images::findorfail($request->route('id'))->delete();
         return response()->json('Deleted Successfully');
     }
 

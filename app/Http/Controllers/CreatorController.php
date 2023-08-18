@@ -6,6 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Requests\CreatorRequest;
 
 
 class CreatorController extends Controller
@@ -24,18 +25,12 @@ class CreatorController extends Controller
         ]);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(CreatorRequest $request): JsonResponse
     {
-        // variable which is created in interface also be used
-        
-        // $objectDetails = $request->validate([
-        //     'name' => 'required',
-        //     'role' => 'required',
-        // ]);
-        
+        // variable which is created in interface also be used 
         $objectDetails = $request->only([
             'name',
-            'role'
+            'role',
         ]);
         
         // using method of creatorRepository which is called from Model's method
@@ -56,7 +51,7 @@ class CreatorController extends Controller
         ]);
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(CreatorRequest $request): JsonResponse
     {
         $objectId = $request->route('id');
         $objectDetails = $request->only([

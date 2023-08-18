@@ -6,6 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Requests\AudioRequest;
 
 class AudioController extends Controller
 {
@@ -24,7 +25,7 @@ class AudioController extends Controller
         ]);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(AudioRequest $request): JsonResponse
     {
         $objectDetails = $request->only([
             'name',
@@ -48,7 +49,7 @@ class AudioController extends Controller
         ]);
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(AudioRequest $request): JsonResponse
     {
         $objectId = $request->route('id');
         $objectDetails = $request->only([

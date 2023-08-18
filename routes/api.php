@@ -26,8 +26,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // });
 
 Route::post('add-image',[ImagesController::class, 'create']);
-Route::put('edit-image', [ImagesController::class, 'edit']);
-Route::delete('delete-product', [ImagesController::class, 'delete']);
+Route::put('edit-image/{id}', [ImagesController::class, 'edit']);
+Route::delete('delete-product/{id}', [ImagesController::class, 'delete']);
 Route::get('get-data', [ImagesController::class, 'getData']);
 
 Route::get('creators', [CreatorController::class, 'index']);
